@@ -1,30 +1,116 @@
-# create class for an object that stores a value and the next position
-class LinkedList():
-    def __init(self,thevalue,thenext=None):
-        self.value = thevalue
-        self.next = thenext
-    def setvalue(self,newvalue):
-        self.value = str(newvalue)
-    def setnext(self,newnext):
-        self.next = newnext
+class Node():
 
+    # Constructor method
+    def __init__(self, item_data, item_priority):
+        self.data = item_data
+        self.priority = item_priority
+        self.next = None
+
+    def get_data(self):
+        return self.data
+
+    def get_priority(self):
+        return self.priority
+
+    def get_next(self):
+        return self.next
+
+    def set_next(self, new_next):
+        self.next = new_next   
+
+
+class PriorityQueue():
+
+    # Constructor method
+    def __init__(self):
+        self.front = None
+        self.rear = None
+
+    def get_front(self):
+        return self.front
+
+    def set_front(self, new_front):
+        self.front = new_front
+
+    def get_rear(self):
+        return self.rear
+
+    def set_rear(self, new_rear):
+        self.rear = new_rear
+    
+    def isempty(self):
+        if self.front == None:
+            return True
+        else:
+            return False
+    
+    def enqueue(self,data , priority):
+
+        newnode = Node(data,priority)
+
+        if self.isempty():
+
+            # if list is empty then newnode will be front and rear
+            self.front = newnode
+            self.rear = newnode
         
-# creating the objects
+        else:
+            
+            #check if new node should be at the front of the queue
+            if newnode.get_priority() > self.front.get_priority():
+                
+                #switch front position and adding pointer tgo the next position
 
-node1 = LinkedList()
-node1.setvalue(3)
-node2 = LinkedList()
-node2.setvalue(5)
-node3 = LinkedList() 
-node3.setvalue(7)
-#creating the pointer
+                newnode.set_next(self.front)
+                self.front = newnode
+            
+            # if new node should be added at end of queue
+            elif newnode.get_priority() <= self.rear.get_priority():
 
-node1.setnext(node2)
-node2.setnext(node3)
+                #switching rear position and adding pointer to the next position
 
-#Print list
+                self.rear.set_next(newnode)
+                self.rear = newnode
 
-while node1.next != None:
-    print(node1.value)
-    node1 = node1.next
-print(node1)
+            else:
+
+                #find point at wich the priority should be
+                
+                current = self.front
+
+                while current.get_priority() >= newnode.get_priority():
+                    
+                    #repeats untill finding something newnode is worth more than,
+                    #then saves the point before it
+                    
+                    previous = current
+                    current = current.get_next()
+                
+                #making the points at wich newnode intersects the list point at eachothe
+                newnode.set_next(current)
+                previous.set_next(newnode)
+    
+    
+    def dequeue(self):
+
+        removed = None
+
+        if self.isempty():
+            print("cant deque an empty list")
+        
+        else:
+            removed = self.front.get_data()
+            self.front = removed.get_next()
+        
+        return removed
+
+                    
+
+List1 = PriorityQueue()
+
+List1.enqueue(1,1)
+List1.enqueue(5,5)
+List1.enqueue(4,4)
+List1.enqueue(3,3)
+List1.enqueue(2,2)
+print(List1)

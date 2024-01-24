@@ -1,0 +1,31 @@
+counter = 0
+
+class LinkedList():
+    def __init(self,thevalue,):
+        self.value = thevalue
+        self.pointer = None
+
+        
+# creating the objects
+
+node1 = LinkedList("3")
+node2 = LinkedList("5")
+node3 = LinkedList("7") 
+
+#creating the pointer
+
+node1.pointer = node2
+node2.pointer = node3
+
+currentnode = node1
+
+#Print list
+
+while True:
+    print(currentnode.value())
+
+    #condition if there is no next value to print.
+    if currentnode.pointer == None:
+        break
+    #loops to the next node pointed to
+    currentnode = currentnode.pointer()

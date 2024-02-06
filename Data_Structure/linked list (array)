@@ -1,0 +1,73 @@
+#making a linked list with an array
+
+TheList = [None,None,None,None,None,None]
+
+# variables
+
+rear = 0
+
+# methods
+
+def enqueue(newname):
+    global rear
+
+    if TheList[5] == None:
+
+        TheList[rear] = newname
+
+        rear = rear + 1
+    else:
+
+        print("list is full")
+
+def dequeue():
+    global rear
+
+    if TheList[0] == None:
+
+        print("List is empty")
+    
+    else:
+
+        TheList[0] = TheList[1]
+        TheList[1] = TheList[2]
+        TheList[2] = TheList[3]
+        TheList[3] = TheList[4]
+        TheList[4] = TheList[5]
+        TheList[5] = None
+        
+        rear = rear - 1
+
+def getitem(search):
+
+    count = None
+
+    pos = None
+
+    for i in range(6):
+        
+        if TheList(i) == search:
+
+            count = count + 1
+
+            pos = i
+        
+        print(f"the name {search} was found {count} amount of tiems and the latest one was at position {0}")
+
+
+#test
+        
+enqueue("Josh")
+enqueue("Alex")
+enqueue("Timmy")
+enqueue("james")
+enqueue("falcon")
+enqueue("real")
+enqueue("life")
+print(TheList)
+dequeue()
+dequeue()
+enqueue("fate")
+enqueue("regret")
+dequeue()
+print(TheList)

@@ -38,23 +38,6 @@ def dequeue():
         
         rear = rear - 1
 
-def getitem(search):
-
-    count = None
-
-    pos = None
-
-    for i in range(6):
-        
-        if TheList(i) == search:
-
-            count = count + 1
-
-            pos = i
-        
-        print(f"the name {search} was found {count} amount of tiems and the latest one was at position {0}")
-
-
 #test
         
 enqueue("Josh")

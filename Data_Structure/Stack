@@ -1,0 +1,48 @@
+#creating a list
+
+stack = []
+
+#creating variables
+
+top = -1
+
+#creating functions
+
+def enstack(n):
+    global top
+    if isfull():
+        stack.append(n)
+        top = top + 1
+
+def destack():
+    global top
+    if not isempty():
+        stack.pop(top)
+        top=top-1
+
+def isfull():
+    if len(stack) == 6:
+        return True
+    else:
+        return False
+    
+def isempty():
+    if len(stack) == 0:
+        return True
+    else:
+        return False
+
+
+#test
+    
+enstack("Mondeo")
+enstack("Golf")
+print(isempty())
+enstack("Fiesta")
+enstack("Punto")
+destack()
+enstack("CiviC")
+enstack("Porsche")
+print(isfull())
+destack()
+destack()
